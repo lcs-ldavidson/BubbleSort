@@ -12,6 +12,7 @@ import Foundation
 
 //create an empty array
 var dataSet : [Int] = []
+var hasSwapped : Bool = true
 
 //populate the array to sort
 for _ in 1...10 {
@@ -21,10 +22,14 @@ for _ in 1...10 {
 //print unsorted array
 print(dataSet)
 
-for i in 1...dataSet.count {
+var sortedElementCount = 2
+
+while hasSwapped == true {
+    
+    hasSwapped = false
     
     //one pass through array to float highest number to the end
-    for j in 0...dataSet.count - 2 {
+    for j in 0...dataSet.count - sortedElementCount {
         
         //compare left value to right value
         if dataSet[j] > dataSet[j+1] {
@@ -32,10 +37,16 @@ for i in 1...dataSet.count {
             dataSet[j] = dataSet[j+1]
             dataSet[j+1] = temporaryValue
             
+            hasSwapped = true
+            
         }
-        //print the array after the pass through
-        print(dataSet)
+        
     }
+    
+    if hasSwapped {
+        sortedElementCount += 1
+    }
+    
     //print the array after the pass through
     print(dataSet)
 }
